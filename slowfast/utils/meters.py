@@ -195,7 +195,7 @@ class AVAMeter(object):
         else:
             groundtruth = self.mini_groundtruth
 
-        self.full_map = evaluate_ava(
+        self.full_map, self.ap_results = evaluate_ava(
             all_preds,
             all_ori_boxes,
             all_metadata.tolist(),

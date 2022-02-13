@@ -317,6 +317,12 @@ def eval_epoch(val_loader, model, val_meter, cur_epoch, cfg, writer=None):
             writer.add_scalars(
                 {"Val/mAP": val_meter.full_map}, global_step=cur_epoch
             )
+            for key in val_meter.ap_results:
+                if key != "PascalBoxes_Precision/mAP@0.5IOU":
+                    _, plot_name, graph_name = key.split('/')
+                    writer.add_scalars(
+                        {'{}/{}'.format(plot_name, graph_name): val_meter.ap_results[key]}, global_step=cur_epoch
+                    )
         else:
             all_preds = [pred.clone().detach() for pred in val_meter.all_preds]
             all_labels = [
