@@ -28,11 +28,7 @@ def main():
     cfg = assert_and_infer_cfg(cfg)
 
 
-    # task = Task.init(project_name='SlowFast', task_name=cfg.TRAIN.EXPERIMENT_NAME)
-    task = Task.init(project_name='SlowFast', task_name='8 classes')
-    # task = Task.init(project_name='SlowFast', task_name='8 classes debug')
-
-
+    task = Task.init(project_name='SlowFast', task_name='8 classes fixed annots')
 
     # Perform training.
     if cfg.TRAIN.ENABLE:
