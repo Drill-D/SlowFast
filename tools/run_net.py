@@ -3,7 +3,6 @@
 
 from clearml import Task
 
-
 """Wrapper to train and test a video classification model."""
 import sys
 import os
@@ -27,8 +26,8 @@ def main():
     cfg = load_config(args)
     cfg = assert_and_infer_cfg(cfg)
 
-
-    task = Task.init(project_name='SlowFast', task_name='8 classes fixed annots')
+    if not cfg.DEMO.ENABLE:
+        task = Task.init(project_name='SlowFast', task_name='8 classes fixed annots')
 
     # Perform training.
     if cfg.TRAIN.ENABLE:
