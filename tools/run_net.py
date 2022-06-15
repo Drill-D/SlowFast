@@ -26,11 +26,11 @@ def main():
     cfg = load_config(args)
     cfg = assert_and_infer_cfg(cfg)
 
-    if not cfg.DEMO.ENABLE:
-        task = Task.init(project_name='SlowFast', task_name='8 classes fixed annots')
-
     # Perform training.
     if cfg.TRAIN.ENABLE:
+        task = Task.init(project_name='SlowFast', task_name='8 classes new')
+        print(cfg)
+        print(args)
         launch_job(cfg=cfg, init_method=args.init_method, func=train)
 
     # Perform multi-clip testing.
